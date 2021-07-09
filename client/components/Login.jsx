@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SHA256 from 'crypto-js/sha256';
 import { Redirect } from 'react-router-dom';
+import { RUNashvilleApi } from '../resources';
 
 const Login = class extends React.PureComponent {
   constructor() {
@@ -30,7 +31,7 @@ const Login = class extends React.PureComponent {
   userLogin() {
     const { email, password } = this.state;
     const login = { email, password };
-    axios.post('http://54.173.19.52:3000/api/login', login)
+    axios.post(`${RUNashvilleApi}/api/login`, login)
       .then((result) => {
         const { status } = result;
         if (status === 200) {

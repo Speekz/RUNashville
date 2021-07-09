@@ -2,6 +2,7 @@ import React from 'react';
 import ManageUsers from './ManageUsers';
 import ManagePosts from './ManagePosts';
 import ManageEvents from './ManageEvents';
+import { RUNashvilleApi } from '../../resources';
 
 const Admin = class extends React.Component {
   constructor() {
@@ -28,7 +29,7 @@ const Admin = class extends React.Component {
 
 
   getAllUsers() {
-    axios.get('http://54.173.19.52:3000/api/posts')
+    axios.get(`${RUNashvilleApi}/api/posts`)
       .then(res => {
         this.setState({ allPosts: res.data });
       })

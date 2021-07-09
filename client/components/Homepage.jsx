@@ -7,6 +7,7 @@ import data from '../resources/dummydata';
 import feedData from '../resources/dummyFeedData';
 import SectionTitle from './SectionTitle';
 import axios from 'axios';
+import { RUNashvilleApi } from '../resources';
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class Homepage extends React.Component {
 
   componentDidMount() {
     this.updateDisplayedProfile();
-    axios.get('http://54.173.19.52:3000/api/events')
+    axios.get(`${RUNashvilleApi}/api/events`)
     .then((apiData) => {
       console.log('apiData.data:', apiData.data);
       this.setState({ eventData: apiData.data });
@@ -49,7 +50,7 @@ class Homepage extends React.Component {
   }
 
   fetchEvents() {
-    axios.get('http://54.173.19.52:3000/api/events')
+    axios.get(`${RUNashvilleApi}/api/events`)
       .then((apiData) => {
         this.setState({ eventData: apiData.data });
         console.log('apiData.data:', apiData.data);
@@ -58,8 +59,8 @@ class Homepage extends React.Component {
   }
 
   updateDisplayedProfile() {
-    axios.get(`http://54.173.19.52:3000/api/posts/all`)
-      // axios.get(`http://54.173.19.52:3000/api/post?id=${this.state.currentUserID}`)
+    axios.get(`${RUNashvilleApi}/api/posts/all`)
+      // axios.get(`${RUNashvilleApi}/api/post?id=${this.state.currentUserID}`)
       .then((newPosts) => {
         console.log('posts: ', newPosts.data);
         this.setState({
