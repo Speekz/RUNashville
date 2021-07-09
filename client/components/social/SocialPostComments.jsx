@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { RUNashvilleApi } from '../../resources'
 
 class SocialPostComments extends React.Component {
     constructor(props){
@@ -14,7 +15,7 @@ class SocialPostComments extends React.Component {
     }
 
     componentDidMount(){
-        axios.get(`http://54.173.19.52:3000/api/post/${this.props.postId}/comments`)
+        axios.get(`${RUNashvilleApi}/api/post/${this.props.postId}/comments`)
             .then((comments) => {
                 console.log('comments: ', comments);
                 this.setState({comments: comments.data || null});

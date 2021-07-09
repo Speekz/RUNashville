@@ -15,3 +15,4 @@ db/.DS_Store
 /client/resources/.DS_Store
 /public/.DS_Store
 .DS_Store
+.env

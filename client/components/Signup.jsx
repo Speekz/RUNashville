@@ -4,6 +4,7 @@ import SHA256 from 'crypto-js/sha256';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 import Validator from '../resources/Validator';
+import { RUNashvilleApi } from '../resources';
 
 const Signup = class extends React.PureComponent {
   constructor() {
@@ -42,7 +43,7 @@ const Signup = class extends React.PureComponent {
         const newUser = {
           name, lastname, address, password, email, created_at: moment().format('YYYY/MM/DD'),
         };
-        axios.post('http://54.173.19.52:3000/api/signup', newUser)
+        axios.post(`${RUNashvilleApi}/api/signup`, newUser)
           .then((result) => {
             const { status } = result;
             if (status === 201) {

@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 // import moment from 'moment';
+import { RUNashvilleApi } from '../../resources'
 
 class AddEventForm extends React.Component {
   constructor(props) {
@@ -86,7 +87,7 @@ class AddEventForm extends React.Component {
     }
 
     console.log('data:', data);
-    axios.post('http://54.173.19.52:3000/api/events', data)
+    axios.post(`${RUNashvilleApi}/api/events`, data)
       .then((res) => {
         console.log('res.data:', res.data);
         console.log('submitted');

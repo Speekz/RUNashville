@@ -1,6 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import axios from 'axios';
+import { RUNashvilleApi } from '../../resources'
 
 class ManageUsers extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class ManageUsers extends React.Component {
 
 
   getAllUsers() {
-    axios.get('http://54.173.19.52:3000/api/users')
+    axios.get(`${RUNashvilleApi}/api/users`)
     // axios.get('/api/User/reported')
       .then((res) => {
         console.log('RES DATA ===', res.data)
@@ -49,7 +50,7 @@ class ManageUsers extends React.Component {
     var body = {
       "toggleHideUsers": this.state.toggledUsers
     };
-    return axios.put('http://54.173.19.52:3000/api/users', body)
+    return axios.put(`${RUNashvilleApi}/api/users`, body)
       .then(() => {
         alert('Users have been Updated!');
       })

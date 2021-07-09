@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { RUNashvilleApi } from '../resources';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Modal extends React.Component {
       "formName1": this.state.formName1,
       "formName2": this.state.formName2,
     };
-    return axios.post('http://54.173.19.52:3000/api/endpoint', body)
+    return axios.post(`${RUNashvilleApi}/api/endpoint`, body)
       .then(() => {
         alert('Record has been Added!');
       })

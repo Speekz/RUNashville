@@ -6,6 +6,7 @@ import friendCard from './friendCard';
 import SectionTitle from '../SectionTitle';
 import AddEventForm from '../Events/AddEventForm';
 import SmallEventCard from '../Events/SmallEventCard';
+import { RUNashvilleApi } from '../../resources';
 
 const Profile = class extends React.PureComponent {
   constructor(props) {
@@ -41,13 +42,13 @@ const Profile = class extends React.PureComponent {
   
   updateDisplayedProfile(userID) {
     this.setState({ currentUserID: userID }, () => {
-      axios.get(`http://54.173.19.52:3000/api/user/${this.state.currentUserID}`)
+      axios.get(`${RUNashvilleApi}/api/user/${this.state.currentUserID}`)
         .then((newProfile) => {
-          axios.get(`http://54.173.19.52:3000/api/friends/${this.state.currentUserID}`)
+          axios.get(`${RUNashvilleApi}/api/friends/${this.state.currentUserID}`)
             .then((newFriends) => {
-              axios.get(`http://54.173.19.52:3000/api/events/${this.state.currentUserID}`)
+              axios.get(`${RUNashvilleApi}/api/events/${this.state.currentUserID}`)
                 .then((newEvents) => {
-                  axios.get(`http://54.173.19.52:3000/api/post?id=${this.state.currentUserID}`)
+                  axios.get(`${RUNashvilleApi}/api/post?id=${this.state.currentUserID}`)
                     .then((newPosts) => {
                       console.log('posts: ', newPosts.data);
                       this.setState({

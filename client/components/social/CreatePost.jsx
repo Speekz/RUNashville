@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import SectionTitle from '../SectionTitle.jsx';
+import { RUNashvilleApi } from '../../resources'
 
 class Modal extends React.Component {
   constructor(props) {
@@ -76,7 +77,7 @@ class Modal extends React.Component {
       alert('Cannot submit a post without message text');
     } else {
       console.log('post: ', this.state.message, 'img: ', this.state.image, 'loc: ', this.state.location, 'id: ', this.props.userId);
-      axios.post('http://54.173.19.52:3000/api/post', {
+      axios.post(`${RUNashvilleApi}/api/post`, {
         message_post: this.state.message,
         image_url: this.state.image,
         location_post: this.state.location,

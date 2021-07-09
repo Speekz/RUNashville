@@ -1,6 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import axios from 'axios';
+import { RUNashvilleApi } from '../../resources'
 
 class ManageEvents extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class ManageEvents extends React.Component {
 
 
   getAllEvents() {
-    axios.get('http://54.173.19.52:3000/api/events/reported')
+    axios.get(`${RUNashvilleApi}/api/events/reported`)
     // axios.get('/api/post/reported')
       .then((res) => {
         console.log('RES DATA ===', res.data)
@@ -49,7 +50,7 @@ class ManageEvents extends React.Component {
     var body = {
       "toggleHideEvents": this.state.toggledEvents
     };
-    return axios.put('http://54.173.19.52:3000/api/post/reported', body)
+    return axios.put(`${RUNashvilleApi}/api/post/reported`, body)
       .then(() => {
         alert('Events have been Updated!');
       })
